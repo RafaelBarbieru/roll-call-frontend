@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Access-Control-Allow-Origin *">
+    <link rel="stylesheet" href="styles.css">
+    <title>KEA Roll Call</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div id="div-login">
+        <div class="min-h-screen bg-gray-100 flex items-center">
+            <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+                <div class="py-12 p-10 bg-white rounded-xl">
+
+                    <!-- TITLE -->
+                    <div class="mb-8">
+                        <h1 class="text-center text-2xl font-medium">ROLL CALL</h1>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-6">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="name">Email</label>
+                        <input id="t_email" type="email"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+                            placeholder="Email" />
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="mb-4">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="name">Password</label>
+                        <input id="t_password" type="password"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+                            placeholder="Password" />
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+                    <button id="b_login"
+                        class="w-full mt-6 text-indigo-50 font-bold bg-indigo-600 py-3 rounded-md hover:bg-indigo-500 transition duration-300">LOGIN</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEACHER -->
+    <div id="div-teacher" hidden>
+        <div class="min-h-screen bg-gray-100 flex items-center">
+            <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+
+                <div class="py-12 p-10 bg-white rounded-xl">
+
+                    <!-- TITLE -->
+                    <div class="mb-8">
+                        <h1 class="text-center text-xl font-medium">Generate assistance code for subject</h1>
+                    </div>
+
+                    <!-- SUBJECT -->
+                    <div class="mb-6">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="subjects">Subject</label>
+                        <select id="t_subjects_teacher" name="subjects_teacher"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded">
+                        </select>
+                    </div>
+
+
+                    <!-- EXPIRY -->
+                    <div class="mb-6">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="name">Expiry time in
+                            minutes</label>
+                        <input id="t_expiry" type="number"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+                            placeholder="15" min="5" max="240" />
+                    </div>
+
+
+                    <!-- GENERATE BUTTON -->
+                    <button autofocus id="b_generate"
+                        class="w-full mt-6 text-indigo-50 font-bold bg-green-600 py-3 rounded-md hover:bg-green-500 transition duration-300">GENERATE
+                        ATTENDANCE CODE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERATED -->
+    <div id="div-generated" hidden>
+        <div class="min-h-screen bg-gray-100 flex items-center">
+            <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+
+                <div class="py-12 p-10 bg-white rounded-xl">
+
+                    <!-- TITLE -->
+                    <div class="mb-4">
+                        <h3 class="text-center text-xl font-medium">A code has been generated for <span
+                                id="l_generatedSubject"></span></h3>
+                    </div>
+
+                    <!-- CODE -->
+                    <h1 id="l_code" class="text-center text-xxl font-bold" style="font-size: 2em;"></h1>
+
+                    <!-- TIME EXPIRATION -->
+                    <h2 class="text-center">Time left: <span id="l_expiration"></span> minutes</h2>
+
+                    <!-- RETURN BUTTON -->
+                    <button autofocus id="b_return"
+                        class="w-full mt-6 text-indigo-50 font-bold bg-gray-600 py-3 rounded-md hover:bg-gray-500 transition duration-300">LOG
+                        OUT</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT -->
+    <div id="div-student" hidden>
+        <div class="min-h-screen bg-gray-100 flex items-center">
+            <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+                <div class="py-12 p-10 bg-white rounded-xl">
+
+                    <!-- TITLE -->
+                    <div class="mb-8">
+                        <h1 class="text-center text-xl font-medium">Welcome back <span id="studentName"></span></h1>
+                    </div>
+
+                    <!-- SUBJECT -->
+                    <div class="mb-6">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="subjects">Subject</label>
+                        <select id="t_subjects_student" name="subjects_student"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded">
+                        </select>
+                    </div>
+
+                    <!-- CODE -->
+                    <div class="mb-6">
+                        <label class="mr-4 text-gray-700 font-bold inline-block mb-2" for="code">Code</label>
+                        <input id="t_code" type="text"
+                            class="border bg-gray-100 py-2 px-4 w-full outline-none focus:ring-2 focus:ring-indigo-400 rounded" />
+                    </div>
+
+                    <!-- MARK ATTENDANCE BUTTON -->
+                    <button id="b_mark"
+                        class="w-full mt-6 text-indigo-50 font-bold bg-green-600 py-3 rounded-md hover:bg-green-500 transition duration-300">MARK
+                        ATTENDANCE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT CHECKED -->
+    <div id="div-student-checked" hidden>
+        <div class="min-h-screen bg-gray-100 flex items-center">
+            <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+                <div class="py-12 p-10 bg-green-400 rounded-xl">
+
+                    <!-- TITLE -->
+                    <div>
+                        <h1 class="text-center text-white text-xl font-medium">ATTENDANCE CHECKED</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+ENDPOINT: POST /login
+
+DESCRIPTION: Sends the backend the login details and the backend grants access to a valid user
+
+REQUEST:
+{
+    "email": (email that the user has entered),
+    "password": (password that the user has entered)
+}
+
+RESPONSE (200):
+{
+    "userRole": "student" | "teacher" | "admin",
+    "userDetails": {
+        "id": (ID of the student),
+        "firstName": (first name of the student),
+        "lastName": (last name of the student),
+        "phoneNumber": (phone number of the student),
+        "subjects": [
+            {
+                "id": (ID of the subject),
+                "name": (name of the subject),
+                "description": (description of the subject),
+                "programName": (name of the program)
+            },
+            {
+                "id": (ID of the subject),
+                "name": (name of the subject),
+                "description": (description of the subject),
+                "programName": (name of the program)
+            }
+        ]
+    }
+}
+
+RESPONSE (401):
+{
+    "error": "Incorrect email address or password, please try again" 
+}
+
+RESPONSE (403) [Only for students that are not connected to the school's network]:
+{
+    "error": "You can only access this website through your school's network"
+}
+
+RESPONSE (50X):
+{
+    "error": "An unexpected error has occurred, please try again later"
+}
+
+=============================================================
+
+ENDPOINT: GET /subjects/:userId
+
+DESCRIPTION: Gets the subjects of a specific teacher, passed as an ID through the URL parameter.
+
+RESPONSE (200):
+{
+    "subjects": [
+        {
+            "id": (ID of the subject),
+            "name": (name of the subject),
+            "description": (description of the subject),
+            "programName": (name of the program)
+        },
+        {
+            "id": (ID of the subject),
+            "name": (name of the subject),
+            "description": (description of the subject),
+            "programName": (name of the program)
+        }
+    ]
+}
+
+RESPONSE (404):
+{
+    "error": "The user specified does not exist"
+}
+
+RESPONSE (50X):
+{
+    "error": "An unexpected error has occurred, please try again later"
+}
+
+=============================================================
+
+ENDPOINT: POST /generate
+
+REQUEST:
+{
+    "userId": (ID of the teacher),
+    "expirationTime": (time in seconds),
+    "subjectId": (ID of the subject)
+}
+
+RESPONSE (200):
+{
+    "subjectName": (name of the subject),
+    "expirationTime": (time in seconds),
+    "code": (code generated)
+}
+
+RESPONSE (50X):
+{
+    "error": "An unexpected error has occurred, please try again later"
+}
+
+=============================================================
+
+ENDPOINT: POST /check
+
+REQUEST: 
+{
+    "userId": (ID of the student),
+    "code": (code inserted by the student)
+}
+
+RESPONSE (200):
+{
+    "userId": (ID of the student),
+    "subjectName": (name of the subject),
+    "programName": (name of the program), 
+}
+
+RESPONSE (404):
+{
+    "error": "The code is incorrect"
+}
+
+RESPONSE (403):
+{
+    "error": "You are not registered in the subject you tried to check the attendance for. Please, contact your local administrator if you think this is an error"
+}
+
+RESPONSE (50X):
+{
+    "error": "An unexpected error has occurred, please try again later"
+}

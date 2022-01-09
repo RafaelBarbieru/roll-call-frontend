@@ -1,0 +1,14 @@
+ec3ab9e2-f28c-4d0c-a97f-aebf7b21e968,john0186,$2b$12$oPjMAL32glwqZBvTHEb0MeOFMeUiBAo2TTeSk6aKyTKfvcAY55PqC,john0186@stud.kea.dk,34dfc8d1-d9da-41cc-9bcd-cd5853ac1067,ff5c468e-83a9-471d-908f-494daeb2b1e7,2022-01-08 20:29:32.543229+01,2022-01-08 20:29:32.543229+01
+5b5df6c3-4e3e-4434-a996-88b5bfb55efa,will0185,$2b$12$92ztn2EV2GFeLu5HP3c.oOJY4IP4KHuW6OfWyCV4uO4qlhT56a/pq,will0185@teach.kea.dk,81dc8b5b-c8ff-4a46-8fda-4df18d1584b1,4750c1a0-9f07-4995-a704-53141af16a92,2022-01-08 20:29:32.721567+01,2022-01-08 20:29:32.721567+01
+
+
+ec3ab9e2-f28c-4d0c-a97f-aebf7b21e968
+john0186@stud.kea.dk
+test
+
+5b5df6c3-4e3e-4434-a996-88b5bfb55efa
+will0185@teach.kea.dk
+test
+
+5a5512e4-347a-42c0-91f0-1bea99501233 - DLS
+e4075a0f-eaa9-48f5-9bb1-9b9386445836 - Testing
