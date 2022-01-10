@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   const divLogin = $("#div-login")
   const divTeacher = $("#div-teacher")
+  const divGenerated = $("#div-generated")
   const divStudent = $("#div-student")
   const divStudentChecked = $("#div-student-checked")
   const email = $('#t_email')
@@ -80,6 +81,7 @@ $(document).ready(function () {
   function goLogin() {
     $(divLogin).show()
     $(divTeacher).hide()
+    $(divGenerated).hide()
     $(divStudent).hide()
     $(divStudentChecked).hide()
     $("#t_email").val('')
