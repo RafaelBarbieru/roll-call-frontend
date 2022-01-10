@@ -47,8 +47,8 @@ $(document).ready(function () {
         codeObject = {
           subjectId: subjectId,
           subjectName: res.subjectName,
-          code: res.code,
-          time: time
+          time: res.expirationTime,
+          code: res.code          
         }
         $("#l_generatedSubject").text(codeObject.subjectName)
         $("#l_code").text(codeObject.code)
@@ -129,6 +129,11 @@ $(document).ready(function () {
   }
 
   async function postGenerate(teacherId, subjectId, time) {
+    console.log({
+      userId: teacherId,
+      subjectId: subjectId,
+      expirationTime: time
+    })
     const response = await fetch('https://schoolrollcall.herokuapp.com/generate', {
       method: 'POST',
       headers: {
