@@ -64,7 +64,7 @@ $(document).ready(function () {
   $("#b_mark").click(() => {
     const code = $("#t_code").val()
     postCheck(code).then(res => {
-      if(res.error) {
+      if (res.error) {
         alert("The code is not correct")
       } else {
         $(divStudent).hide()
@@ -73,17 +73,22 @@ $(document).ready(function () {
     })
   })
 
-  $("#b_return").click(() => {
-    $("#div-generated").hide()
-    $("#div-login").show()
-    $("#t_email").val('')
-    $("#t_password").val('')
+  $(".b_logout").click(() => {
+    goLogin()
   })
 
-  function goHome() {
-    $("#div-generated").hide()
-    $("#div-login").show()
+  function goLogin() {
+    $(divLogin).show()
+    $(divTeacher).hide()
+    $(divStudent).hide()
+    $(divStudentChecked).hide()
+    $("#t_email").val('')
+    $("#t_password").val('')
   }
+
+  $("#b_back_teacher").click(() => {
+    goLogin()
+  })
 
   async function login() {
     const url = "https://schoolrollcall.herokuapp.com/login"
