@@ -119,6 +119,7 @@ $(document).ready(function () {
   }
 
   function fillSubjects(subjects, isTeacher) {
+    $("#t_subjects_teacher").empty()
     subjects.forEach(subject => {
       if (isTeacher) {
         $("#t_subjects_teacher").append($("<option />").val(subject.id).text(subject.name));
